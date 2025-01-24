@@ -50,8 +50,8 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinCevresi(yarıcap) {
+  return 2 * pi * yarıcap ;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -64,8 +64,8 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(yarıcap) {
+   return pi * Math.pow(yarıcap,2);
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -99,25 +99,90 @@ let ucetambolunenler,
 
 // 3a çözümü
 
+ enkucuk = sayilar[0] ;
+
+for(let i = 0 ; i<sayilar.length ; i++){
+
+  if(sayilar[i] < enkucuk){
+
+    enkucuk = sayilar[i];
+  }
+
+}
+enbuyuk = sayilar[0] ;
+
+for(let i = 0 ; i<sayilar.length ; i++){
+
+  if(sayilar[i] > enkucuk){
+
+    enbuyuk = sayilar[i];
+  }
+
+}
+
 /* kodlar buraya */
 
 // 3b çözümü:
+
+ucetambolunenler = [] ;
+
+sayilar.forEach((sayi) => {
+  if (sayi % 3 === 0) {
+    ucetambolunenler.push(sayi);
+  }
+});
+
 
 /* kodlar buraya */
 
 // 3c çözümü:
 
+ucebolunenlerintoplami = sayilar.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0)
+
+
+
 /* kodlar buraya */
 
 // 3d çözümü
+
+
+besyuzdenkucuksayilar = [] ;
+
+besyuzdenkucuksayilar = sayilar.filter((sayi) => sayi < 500);
+
+
+
 
 /* kodlar buraya */
 
 // 3e çözümü
 
+
+siralisayilar = besyuzdenkucuksayilar.sort(function(a,b){return a-b});
+
+
 /* kodlar buraya */
 
 // 3f çözümü
+
+tekraredensayilar = [];
+const tekrarSayilari = {}
+
+sayilar.forEach((sayi) => {
+  tekrarSayilari[sayi] = (tekrarSayilari[sayi] || 0) + 1;
+});
+
+
+for (const [sayi, tekrarSayisi] of Object.entries(tekrarSayilari)) {
+  if (tekrarSayisi > 1) {
+    tekraredensayilar.push(`${sayi} sayısı ${tekrarSayisi} kere tekrar edilmiştir`);
+  }
+}
+
+
+
 
 /* kodlar buraya */
 
@@ -140,3 +205,5 @@ module.exports = {
   siralisayilar,
   tekraredensayilar,
 };
+
+console.log(CemberinAlani(15));
